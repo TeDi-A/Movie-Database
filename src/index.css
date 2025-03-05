@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Moviefont;
+  src: url("resources/fonts/LeagueSpartan-Regular.ttf");
+}
+
+html,
+body {
+  background-color: rgb(18, 24, 38);
+
+  font-family: Moviefont;
+  color: white;
+}
+
+.header-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-image {
+  width: 100vw;
+  height: 50vh;
+  object-fit: cover;
+  filter: brightness(45%);
+}
+
+.header-content {
+  position: absolute;
+  font-size: 6em;
+  background: linear-gradient(
+    90deg,
+    rgb(21, 168, 201) 0%,
+    rgb(57, 70, 213) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* SEARCH SECTION */
+.search-section {
+  position: absolute;
+  width: 70vw;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.25em 1.5em;
+  border-radius: 0.5em;
+  background-color: rgb(32, 41, 58, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.searchbar-top {
+  top: 100px;
+  position: relative;
+}
+
+.search-section input {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 1.5em;
+  width: 100%;
+}
+
+.search-section input:focus {
+  outline: none;
+  border: none;
+}
+
+.search-results-list {
+  margin: 2.5em auto;
+  width: 70%;
+  max-height: 35vh;
+  overflow: scroll;
+  border-radius: 0.5em;
+  position: absolute;
+  left: 15%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.hide-list {
+  display: none;
+  border: 2px solid red;
+}
+
+.search-results-list li {
+  list-style: none;
+  padding: 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  margin: 0.25em 0;
+  background-color: rgb(32, 41, 58, 0.9);
+  border-radius: 0.5em;
+}
+
+.search-results-list li:hover {
+  cursor: pointer;
+  background-color: white;
+  color: rgb(32, 41, 58);
+}
+
+.hide-arrow {
+  display: none;
+}
+
+/* DISPLAY SECTION */
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.display-section {
+  display: grid;
+  grid-template-columns: repeat(300px, 1fr);
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  border-radius: 0.5em;
+  margin: 0 auto;
+  padding: 2em;
+  width: 70%;
+}
+
+.movie-people {
+  font-weight: 700;
+}
+
+.movie-card img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5em;
+}
+
+.movie-genre {
+  display: flex;
+  gap: 1em;
+}
+
+.genre-item {
+  padding: 0.25em 1em;
+  background-color: rgb(30, 38, 56);
+  border-radius: 1em;
+}
+
+.movie-button {
+  padding: 0.25em 1em;
+  border: none;
+  border-radius: 1em;
+  font-size: 1em;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.results {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 550px) {
+  .search-section input::placeholder {
+    color: transparent;
+  }
+}
+@media (max-width: 900px) {
+  .movie-card {
+    flex-direction: column;
+  }
+}
