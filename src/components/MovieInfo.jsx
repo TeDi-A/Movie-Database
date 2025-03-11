@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
 import SearchResults from "./SearchResults";
 import { useSearchContext } from "./SearchContext";
+import { DotLoader } from "react-spinners";
+import { ArrowLeft } from "lucide-react";
 
 const MovieInfo = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const { loading, setLoading } = useSearchContext();
+
+  const navigate = useNavigate();
+  function handleBackClick() {
+    console.log("Clicked");
+    navigate(-1);
+  }
 
   useEffect(() => {
     if (id) {
@@ -26,7 +34,11 @@ const MovieInfo = () => {
   }, [id, setLoading]);
 
   if (loading) {
-    return <div className="loading">Loading...</div>;
+    return (
+      <div className="loading">
+        <DotLoader color="white" />
+      </div>
+    );
   }
 
   if (!movie) {
@@ -34,11 +46,11 @@ const MovieInfo = () => {
   }
 
   return (
-    <div className="">
-      <div className="searchbar-top">
-        <Searchbar />
-        <SearchResults />
-      </div>
+    <div className="movie-info">
+      <button className="back-btn" onClick={handleBackClick}>
+        <ArrowLeft size={35} />
+      </button>
+
       <div className="movie-card results">
         <div className="movie-banner">
           <img src={movie.Poster} alt={movie.Title} />

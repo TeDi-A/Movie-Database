@@ -3,7 +3,7 @@ import { Search, ArrowRight } from "lucide-react";
 import { useSearchContext } from "./SearchContext";
 
 const Searchbar = () => {
-  const { searchTerm, handleSearchChange } = useSearchContext();
+  const { searchTerm, handleSearchChange, handleDisplaySearchResults } = useSearchContext();
 
   return (
     <div className="search-section">
@@ -12,12 +12,12 @@ const Searchbar = () => {
         type="text"
         placeholder="Search movies"
         value={searchTerm}
-        onChange={() => handleSearchChange(event)}
+        onChange={handleSearchChange}
       />
-      
       <ArrowRight
         size={35}
-        className={`arrow-icon ${searchTerm == "" ? "hide-arrow" : ""}`}
+        onClick={handleDisplaySearchResults}
+        className={`arrow-icon ${searchTerm === "" ? "hide-arrow" : ""}`}
       />
     </div>
   );

@@ -25,24 +25,31 @@ export const SearchProvider = ({ children }) => {
     navigate(`/movie/${movie.imdbID}`);
   };
 
+  function handleDisplaySearchResults() {
+    setIsSearchResultsVisible(false);
+    setLoading(true);
+  }
+
   useEffect(() => {
     if (searchTerm.length > 2) {
       fetch(`https://www.omdbapi.com/?apikey=c4dcbf63&s=${searchTerm}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.Search) {
+            setLoading(false);
             setmovies(data.Search);
           } else {
-            setmovies([]);
+            setmovies(["EMPTYY"]);
           }
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
+          setLoading(false);
         });
     } else {
       setmovies([]);
     }
-  }, [searchTerm]);
+  }, [searchTerm, setLoading]);
 
   return (
     <SearchContext.Provider
@@ -57,6 +64,7 @@ export const SearchProvider = ({ children }) => {
         handleDisplayMovie,
         loading,
         setLoading,
+        handleDisplaySearchResults,
       }}
     >
       {children}

@@ -5,7 +5,7 @@ const Header = () => {
     <div className="header-section">
       <img
         className="header-image"
-        src="resources/images/planet-earth-background_23-2150564686.jpg"
+        src="images/planet-earth-background_23-2150564686.jpg"
         alt=""
       />
 

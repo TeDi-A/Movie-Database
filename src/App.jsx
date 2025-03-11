@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import MovieInfo from "./components/MovieInfo";
 import DisplaySection from "./components/DisplaySection";
 import { SearchProvider } from "./components/SearchContext";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/movie/:id" element={<MovieInfo />} />
         </Routes>
       </SearchProvider>
+        <Footer />
     </div>
   );
 }
